@@ -1,5 +1,6 @@
 const sequelize = require('../config/connection');
-const { Traveller, Location, Trip } = require('../models');
+const Traveller = require('../models/Traveller');
+const Location = require('../models/Trips');
 
 const travellerSeedData = require('./travellerSeedData.json');
 const locationSeedData = require('./locationSeedData.json');

@@ -1,18 +1,24 @@
-const Traveler = require('./Traveler');
-
-const Traveler = require('./Traveler');
+const Traveller = require('./Traveller');
 const Trips = require('./Trips');
-const Location = require('./Trips');
+const Location = require('./Location');
 
-Location.belongsToMany(Traveler, {
-  through: Trips,
-  foreignKey: 'traveler_id',
-  unique: false,
+Location.belongsToMany(Traveller, {
+  through: {
+    model: Trips,
+    unique: false,
+  },
+  as: 'Travellers',
 });
-Traveler.belongsToMany(Location, {
-  through: Trips,
-  foreignKey: 'location_id',
-  unique: false,
+
+Traveller.belongsToMany(Location, {
+  through: {
+    model: Trips,
+    unique: false,
+  },
+  as: 'Planned_Trips',
 });
-Traveler.hasMany(Location);
-Location.hasMany(Traveler);
+
+// Traveller.hasMany(Location);
+// Location.hasMany(Traveller);
+
+module.exports = { Traveller, Trips, Location };
